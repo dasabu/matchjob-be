@@ -1,0 +1,36 @@
+### Create company
+POST http://localhost:8101/companies
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZTYxZDFmMDNjMTkyNWMyYWE1YTA0MCIsImVtYWlsIjoiZDEyM0BnbWFpbC5jb20iLCJuYW1lIjoiMSIsImlhdCI6MTc0MzEzMzk5OSwiZXhwIjoxODI5NTMzOTk5fQ.x_6AqqSJZON9QHHLfce4u67pMIHJoishXcd28CtD6y4
+
+{
+    "name": "a",
+    "address": "a",
+    "description": "a"
+}
+
+### Update company
+PATCH http://localhost:8101/companies/67e623ba91e88ae094b96457
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZTYxZDFmMDNjMTkyNWMyYWE1YTA0MCIsImVtYWlsIjoiZDEyM0BnbWFpbC5jb20iLCJuYW1lIjoiMSIsImlhdCI6MTc0MzEzMzk5OSwiZXhwIjoxODI5NTMzOTk5fQ.x_6AqqSJZON9QHHLfce4u67pMIHJoishXcd28CtD6y4
+
+{
+    "name": "b",
+    "address": "a",
+    "description": "a"
+}
+
+### Delete company
+DELETE http://localhost:8101/companies/67e623ba91e88ae094b96457
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZTYxZDFmMDNjMTkyNWMyYWE1YTA0MCIsImVtYWlsIjoiZDEyM0BnbWFpbC5jb20iLCJuYW1lIjoiMSIsImlhdCI6MTc0MzEzMzk5OSwiZXhwIjoxODI5NTMzOTk5fQ.x_6AqqSJZON9QHHLfce4u67pMIHJoishXcd28CtD6y4
+
+{
+    "name": "b",
+    "address": "a",
+    "description": "a"
+}
+
+### Get with pagination
+GET http://localhost:8101/companies?current=1&pageSize=10&name=/c/i
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZTYxZDFmMDNjMTkyNWMyYWE1YTA0MCIsImVtYWlsIjoiZDEyM0BnbWFpbC5jb20iLCJuYW1lIjoiMSIsImlhdCI6MTc0MzEzMzk5OSwiZXhwIjoxODI5NTMzOTk5fQ.x_6AqqSJZON9QHHLfce4u67pMIHJoishXcd28CtD6y4

@@ -1,0 +1,13 @@
+### Sign In
+POST http://localhost:8101/auth/sign-in
+Content-Type: application/json
+
+{
+    "email": "d123@gmail.com",
+    "password": "1"
+}
+
+### Get me
+GET http://localhost:8101/auth/me
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2UzY2MwNGUyZGY1NzNiOTA1YmMzMGIiLCJlbWFpbCI6ImRAZ21haWwuY29tIiwiaWF0IjoxNzQzMDA0NDk2LCJleHAiOjE3NDMwNjQ0OTZ9.ChaX2ZGSb8HaXUF6xNQz-yUs4DrXTkgxboW7ut-GEt8

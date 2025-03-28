@@ -1,0 +1,26 @@
+### Create user
+POST http://localhost:8101/users
+Content-Type: application/json
+
+{
+    "email": "d123@gmail.com",
+    "password": "1",
+    "name": "1"
+}
+
+### Find one by id
+GET http://localhost:8101/users/67e2888bbc8db2585a20fc17
+Content-Type: application/json
+
+### Update user
+PATCH http://localhost:8101/users/67e2888bbc8db2585a20fc17
+Content-Type: application/json
+
+{
+    "email": "Hehe@gmail.com",
+    "name": "hehe"
+}
+
+### Delete user
+DELETE http://localhost:8101/users/67e436a5d09e71fda264e747
+Content-Type: application/json
