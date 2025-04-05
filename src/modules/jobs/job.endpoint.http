@@ -1,0 +1,19 @@
+### Create job
+POST http://localhost:8101/api/v1/jobs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZTk3OGJhOWQwNjRjMDY4N2YwNzI0ZSIsImVtYWlsIjoiMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoiRHV5IEFuaCBOZ3UiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0MzM1NDk1MCwiZXhwIjoxNzQzNDQxMzUwfQ.z881qH0a69L6HA6BA23blLEg25-bTWy8Wi-G_nR6pVw
+
+{
+    "name": "Software Engineer",
+    "skills": ["JavaScript", "TypeScript", "Node.js"],
+    "company": {
+      "_id": "65f0c3e5b4a3d2f8a4c9e7b1",
+      "name": "Tech Corp"
+    },
+    "salary": 0,
+    "quantity": 3,
+    "level": "Mid-level",
+    "description": "Develop and maintain backend services using Node.js and TypeScript.",
+    "startDate": "2025-04-01T00:00:00.000Z",
+    "endDate": "2025-03-01T00:00:00.000Z"
+}

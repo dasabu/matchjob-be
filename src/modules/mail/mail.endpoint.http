@@ -1,0 +1,2 @@
+### Send
+GET http://localhost:8101/api/v1/mail

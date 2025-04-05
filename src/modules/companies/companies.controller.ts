@@ -1,3 +1,4 @@
+import { Public } from './../../shared/decorators/public.decorator';
 import {
   Body,
   Controller,
@@ -23,6 +24,7 @@ export class CompaniesController {
     return this.companiesService.create(createCompanyDto, user);
   }
 
+  @Public()
   @Get()
   findAll(
     @Query('current') current, // const current = req.query.current
@@ -38,7 +40,7 @@ export class CompaniesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.companiesService.findOne(id);
+    return this.companiesService.findOneById(id);
   }
 
   @Patch(':id')

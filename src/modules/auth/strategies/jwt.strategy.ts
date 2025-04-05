@@ -4,10 +4,14 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { IUser } from 'src/modules/users/user.interface';
 import { IPayload } from '../payload.interface';
+import { RolesService } from 'src/modules/roles/roles.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private rolesService: RolesService,
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -17,12 +21,18 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: IPayload) {
     // decoded payload from token
+    const { _id, email, name, role } = payload;
+
+    const roleObj = await this.rolesService.findOne(role._id);
+
     const user: IUser = {
-      _id: payload._id,
-      email: payload.email,
-      name: payload.name,
-      role: payload.role,
+      _id,
+      email,
+      name,
+      role,
+      permissions: roleObj.permissions,
     };
+
     return user; // req.user = payload
   }
 }

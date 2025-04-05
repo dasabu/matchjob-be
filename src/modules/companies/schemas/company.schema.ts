@@ -15,6 +15,15 @@ export class Company {
   description: string;
 
   @Prop()
+  logo: string;
+
+  @Prop()
+  createdAt: Date;
+
+  @Prop()
+  updatedAt: Date;
+
+  @Prop()
   isDeleted: boolean;
 
   @Prop()

@@ -1,5 +1,5 @@
 import { SoftDeleteModel } from 'soft-delete-plugin-mongoose';
-import { Injectable, Query } from '@nestjs/common';
+import { BadRequestException, Injectable, Query } from '@nestjs/common';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -15,14 +15,19 @@ export class CompaniesService {
     private companyModel: SoftDeleteModel<CompanyDocument>,
   ) {}
 
-  create(createCompanyDto: CreateCompanyDto, user: IUser) {
-    return this.companyModel.create({
+  async create(createCompanyDto: CreateCompanyDto, user: IUser) {
+    const newCompany = await this.companyModel.create({
       ...createCompanyDto,
       createdBy: {
         _id: user._id,
         email: user.email,
       },
     });
+
+    return {
+      _id: newCompany._id,
+      createdAt: newCompany.createdAt,
+    };
   }
 
   async findAll(current: number, pageSize: number, qs: string) {
@@ -55,14 +60,18 @@ export class CompaniesService {
     };
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} company`;
+  async findOneById(id: string) {
+    if (!mongoose.Types.ObjectId.isValid(id))
+      throw new BadRequestException(`Company id ${id} not found`);
+    return await this.companyModel.findById({
+      _id: id,
+    });
   }
 
-  update(id: string, updateCompanyDto: UpdateCompanyDto, user: IUser) {
+  async update(id: string, updateCompanyDto: UpdateCompanyDto, user: IUser) {
     if (!mongoose.Types.ObjectId.isValid(id))
-      return `Company id ${id} not found`;
-    return this.companyModel.updateOne(
+      throw new BadRequestException(`Company id ${id} not found`);
+    return await this.companyModel.updateOne(
       { _id: id },
       {
         ...updateCompanyDto,
@@ -76,7 +85,7 @@ export class CompaniesService {
 
   async remove(id: string, user: IUser) {
     if (!mongoose.Types.ObjectId.isValid(id))
-      return `Company id ${id} not found`;
+      throw new BadRequestException(`Company id ${id} not found`);
     await this.companyModel.updateOne(
       { _id: id },
       {
@@ -86,6 +95,6 @@ export class CompaniesService {
         },
       },
     );
-    return this.companyModel.softDelete({ _id: id });
+    return await this.companyModel.softDelete({ _id: id });
   }
 }

@@ -1,13 +1,36 @@
 ### Sign In
-POST http://localhost:8101/auth/sign-in
+POST http://localhost:8101/api/v1/auth/sign-in
 Content-Type: application/json
 
 {
-    "email": "d123@gmail.com",
-    "password": "1"
+    "email": "1234@gmail.com",
+    "password": "123456"
 }
 
-### Get me
-GET http://localhost:8101/auth/me
+### Sign Up
+POST http://localhost:8101/api/v1/auth/sign-up
 Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2UzY2MwNGUyZGY1NzNiOTA1YmMzMGIiLCJlbWFpbCI6ImRAZ21haWwuY29tIiwiaWF0IjoxNzQzMDA0NDk2LCJleHAiOjE3NDMwNjQ0OTZ9.ChaX2ZGSb8HaXUF6xNQz-yUs4DrXTkgxboW7ut-GEt8
+
+{
+    "email": "1234@gmail.com",
+    "password": "123456",
+    "name": "Duy Anh Ngu",
+    "age": 12,
+    "gender": "gay",
+    "address": "St. American"
+}
+
+### Get account
+GET http://localhost:8101/api/v1/auth/account
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZWFjYTIwZjk1NjhjMDQwZmY5YWEyNCIsImVtYWlsIjoiZGFAZ21haWwuY29tIiwibmFtZSI6ImRhQGdtYWlsLmNvbSIsInJvbGUiOiI2N2VhYjE5OTcxZDAwYmUzMDk1ZWVjNmMiLCJpYXQiOjE3NDM0NDE4ODgsImV4cCI6MTc0MzUyODI4OH0.mCOs-0SKLVs5g28UHgWRu-ai3W_1sZPebPwaDa7uhjg
+
+
+### Refresh token
+GET http://localhost:8101/api/v1/auth/refresh-token
+Content-Type: application/json
+
+### Sign out
+POST http://localhost:8101/api/v1/auth/sign-out
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJzaWduLWluLWFjY2Vzcy10b2tlbiIsIl9pZCI6IjY3ZTk3OGJhOWQwNjRjMDY4N2YwNzI0ZSIsImVtYWlsIjoiMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoiRHV5IEFuaCBOZ3UiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0MzM1NDk1MCwiZXhwIjoxNzQzNDQxMzUwfQ.z881qH0a69L6HA6BA23blLEg25-bTWy8Wi-G_nR6pVw
